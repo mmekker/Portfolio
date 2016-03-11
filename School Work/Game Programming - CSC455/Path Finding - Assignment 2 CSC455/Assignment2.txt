@@ -1,0 +1,11 @@
+CSC455 Assignment 2
+- Square grid
+	- start point
+	- end point
+	- impassable squares
+	- squares of different weights
+	- 
+- Path Finding
+	- Dijkstra
+	- A*
+	- 
