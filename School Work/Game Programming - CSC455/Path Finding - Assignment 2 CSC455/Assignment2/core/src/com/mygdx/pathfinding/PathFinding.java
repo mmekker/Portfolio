@@ -34,9 +34,9 @@ public class PathFinding extends ApplicationAdapter
 		font = new BitmapFont();
 		sr = new ShapeRenderer();
 		/* Random grid */
-		grid = new Grid(100, 100);
+		//grid = new Grid(20, 20);
 		/* Grid file input */
-		// grid = new Grid("Grid2");
+		grid = new Grid("Grid2");
 	}
 	
 	/* Game loop */
@@ -47,8 +47,6 @@ public class PathFinding extends ApplicationAdapter
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		/* Check for user input */
 		checkInputs();
-		/* Check that the grid stays in bounds */
-		checkBounds();
 		/* Finds new path if the start or end points are moved */
 		if (newPath)
 		{
@@ -121,20 +119,5 @@ public class PathFinding extends ApplicationAdapter
 				}
 			}
 		}
-	}
-	
-	/**
-	 * Checks that the grid doesn't go off screen.
-	 */
-	public void checkBounds()
-	{
-		if (grid.Xmargin * -1 > grid.xLen * Grid.tileSize)
-			grid.Xmargin = grid.xLen * Grid.tileSize * -1;
-		if (grid.Xmargin > 590)
-			grid.Xmargin = 590;
-		if (grid.Ymargin * -1 > grid.yLen * Grid.tileSize - 30)
-			grid.Ymargin = grid.yLen * Grid.tileSize * -1 + 30;
-		if (grid.Ymargin > 590)
-			grid.Ymargin = 590;
 	}
 }

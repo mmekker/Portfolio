@@ -180,6 +180,8 @@ public class Grid
 	 */
 	public void draw(ShapeRenderer sr, SpriteBatch batch, BitmapFont font)
 	{
+		/* Check that the grid stays in bounds */
+		checkBounds();
 		// ShapeRenderer
 		sr.begin(ShapeType.Filled);
 		// Grid blocks
@@ -438,6 +440,21 @@ public class Grid
 				grid[x][y].parent = null;
 			}
 		}
+	}
+	
+	/**
+	 * Checks that the grid doesn't go off screen.
+	 */
+	public void checkBounds()
+	{
+		if (Xmargin * -1 > xLen * Grid.tileSize)
+			Xmargin = xLen * Grid.tileSize * -1;
+		if (Xmargin > 590)
+			Xmargin = 590;
+		if (Ymargin * -1 > yLen * Grid.tileSize - 30)
+			Ymargin = yLen * Grid.tileSize * -1 + 30;
+		if (Ymargin > 590)
+			Ymargin = 590;
 	}
 	
 	/* Getters and Setters */
