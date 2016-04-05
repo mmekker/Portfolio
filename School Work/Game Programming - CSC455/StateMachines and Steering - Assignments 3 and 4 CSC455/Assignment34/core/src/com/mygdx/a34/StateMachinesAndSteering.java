@@ -50,6 +50,7 @@ public class StateMachinesAndSteering extends ApplicationAdapter
 		checkInputs();
 		checkBounds(player);
 		checkBounds(enemy);
+		checkCollision();
 		updatePeople(people);
 		sr.begin(ShapeType.Filled);
 		sr.setColor(Color.BROWN);
@@ -57,6 +58,7 @@ public class StateMachinesAndSteering extends ApplicationAdapter
 		sr.end();
 	}
 	
+
 	/**
 	 * Update method for a list of Person objects.
 	 * Each Person has tick() and draw() so that they are updated on screen.
@@ -127,6 +129,26 @@ public class StateMachinesAndSteering extends ApplicationAdapter
 		if(p.position.x > 500 && p.position.y > 500
 				&& p.position.x < 510)
 			p.position.x = 500;
-			
+	}
+	
+	/**
+	 * Checks if the player and enemy are touching.
+	 * If so it resets the game.
+	 */
+	private void checkCollision()
+	{
+		/*Collision*/
+		if(player.position.x > enemy.position.x -5
+				&& player.position.x < enemy.position.x +5
+				&& player.position.y > enemy.position.y -5
+				&& player.position.y < enemy.position.y +5)
+		{
+			//Reset Person objects
+			player = new Player();
+			enemy = new Enemy();
+			people = new ArrayList<Person>();
+			people.add(enemy);
+			people.add(player);
+		}
 	}
 }

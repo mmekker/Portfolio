@@ -37,11 +37,13 @@ public class Enemy extends Person
 		this.velocity = new Vector2();
 		this.acceleration = new Vector2();
 		maxSpeed = 3;
-		state = State.SENTRY;
+		StateTransition(State.SENTRY);
 
-		point1 = new Vector2(0,0);
-		point2 = new Vector2(0,0);
-		point3 = new Vector2(0,0);
+		point1 = new Vector2(position.x,position.y);
+		point2 = new Vector2(((position.x)+(float)(Math.sin(direction-fov) * fovLength)),
+				((position.y)+(float)(Math.cos(direction-fov) * fovLength)));
+		point3 = new Vector2(((position.x)+(float)(Math.sin(direction+fov) * fovLength)),
+				((position.y)+(float)(Math.cos(direction+fov) * fovLength)));
 	}
 	
 	/**
