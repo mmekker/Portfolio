@@ -18,7 +18,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
  */
 public class Breakout extends ApplicationAdapter {
 	SpriteBatch batch;
-    private BitmapFont font;
+    	private BitmapFont font;
 	ShapeRenderer shapeRenderer;
 	Texture background;
 	Texture title;
